@@ -2,39 +2,54 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CRUD de Artículos</title>
+    <title>Gestión de Artículos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="container mt-4">
-    <h1 class="text-center mb-4">Gestión de Artículos - Alan Ortiz</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Gestión de Artículos</h1>
 
-    <form id="form-articulo" class="mb-4">
+    <form id="form-articulo" class="card p-4 shadow-sm">
         <input type="hidden" id="idArticulo">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre del Artículo</label>
-            <input type="text" class="form-control" id="nombre" required>
-        </div>
-        <div class="mb-3">
-            <label for="precio" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="precio" step="0.01" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-secondary" id="cancelar">Cancelar</button>
+
+        <fieldset>
+            <legend class="h5 mb-3">Formulario de Artículo</legend>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del Artículo</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ej: Lápiz" required pattern=".{3,}">
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio ($)</label>
+                <input type="number" class="form-control" id="precio" step="0.01" min="0" required>
+            </div>
+            <div class="d-flex justify-content-end gap-2">
+                <button type="submit" class="btn btn-success">
+                    💾 Guardar
+                </button>
+                <button type="button" class="btn btn-outline-secondary" id="cancelar">
+                    ❌ Cancelar
+                </button>
+            </div>
+        </fieldset>
     </form>
 
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="tabla-articulos"></tbody>
-    </table>
+    <div class="table-responsive mt-5">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-articulos">
+                <!-- Contenido generado dinámicamente -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script src="js/app.js"></script>
